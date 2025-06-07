@@ -97,12 +97,32 @@ Our system currently identifies the following accent categories:
    pip install -r requirements.txt
    ```
 
-3. **Verify installation**:
+3. **Configure Google Text-to-Speech API** (Required for TTS sample generation):
+   
+   **Option 1: Service Account (Recommended for Production)**
+   - Create a Google Cloud project and enable the Text-to-Speech API
+   - Create a service account and download the JSON credentials file
+   - Set the environment variable:
+   ```bash
+   export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/credentials.json"
+   ```
+   
+   **Option 2: Environment File (Recommended for Development)**
+   - Copy the sample environment file:
+   ```bash
+   cp sample.env .env
+   ```
+   - Edit `.env` and add your Google credentials path:
+   ```bash
+   GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
+   ```
+
+4. **Verify installation**:
    ```bash
    python accent_classifier.py --check-deps
    ```
 
-4. **Generate initial training data** (first run):
+5. **Generate initial training data** (first run):
    ```bash
    python accent_classifier.py --train --use-tts --verbose
    ```
@@ -215,23 +235,35 @@ The system uses an ensemble approach:
 
 ## 🔮 Future Improvements & Roadmap
 
+*For detailed implementation plans, technical specifications, and development timelines, see [future-plan.md](future-plan.md)*
+
 ### Phase 1: Custom Audio Sample Integration (Next Release)
 
-**Objective**: Support user-provided audio samples alongside Google TTS data
+**Objective**: Support user-provided audio samples and non-Google TTS services
 
 **Features**:
+- **Non-Google TTS Support**: Amazon Polly, Azure Speech, IBM Watson, and offline TTS engines
 - **Custom Sample Directory**: `custom_samples/american/`, `custom_samples/british/`, etc.
 - **Audio Validation Pipeline**: Automatic quality checks for user-provided samples
-- **Hybrid Training**: Combine TTS-generated and custom samples for optimal performance
+- **Hybrid Training**: Combine multiple TTS sources and custom samples for optimal performance
+- **Multi-language Custom Training**: Support for user-defined languages and regional dialects
 - **Sample Annotation Tools**: GUI for labeling and categorizing custom audio
-- **Quality Metrics**: SNR, duration, and accent authenticity scoring
+- **Quality Metrics**: SNR, duration, accent authenticity, and cross-TTS consistency scoring
 
 **Implementation Plan**:
 ```python
-# Planned API for custom samples
+# Planned API for custom samples and alternative TTS
 python accent_classifier.py --train --use-custom-samples --sample-dir custom_audio/
-python accent_classifier.py --train --hybrid --tts-ratio 0.6 --custom-ratio 0.4
+python accent_classifier.py --train --tts-engine amazon-polly --languages american,british
+python accent_classifier.py --train --hybrid --tts-ratio 0.4 --custom-ratio 0.6
+python accent_classifier.py --add-language --name "australian" --custom-samples australian_audio/
 ```
+
+**Non-Google TTS Integration**:
+- Support for Amazon Polly, Azure Speech Services, IBM Watson TTS
+- Offline TTS engines (eSpeak, Festival, Flite) for privacy-sensitive applications
+- Voice cloning integration for accent-specific synthetic data generation
+- Multi-TTS training for improved generalization across synthetic voices
 
 ### Phase 2: Advanced Model Architecture
 
@@ -346,6 +378,9 @@ accent-classifier/
 ├── docs/                       # Detailed documentation
 ├── models/                     # Trained model artifacts
 ├── examples/                   # Example audio files
+├── sample.env                  # Environment configuration template
+├── requirements.txt            # Python dependencies
+├── future-plan.md              # Detailed development roadmap
 └── accent_classifier.py        # Main CLI interface
 ```
 
@@ -458,6 +493,24 @@ python accent_classifier.py --file audio.wav --verbose
 # - Convert to WAV: ffmpeg -i input.mp3 -ar 16000 output.wav
 # - Reduce noise: Use Audacity or similar tools
 # - Ensure minimum 3-second duration
+```
+
+**Google TTS API Issues**:
+```bash
+# Check if credentials are properly set
+echo $GOOGLE_APPLICATION_CREDENTIALS
+
+# Verify credentials file exists and is readable
+ls -la "$GOOGLE_APPLICATION_CREDENTIALS"
+
+# Test TTS API access
+python -c "from gtts import gTTS; gTTS('test', lang='en').save('test.mp3')"
+
+# Common credential fixes:
+# 1. Set environment variable: export GOOGLE_APPLICATION_CREDENTIALS="path/to/credentials.json"
+# 2. Use .env file: Copy sample.env to .env and update the path
+# 3. Verify Google Cloud project has Text-to-Speech API enabled
+# 4. Check service account has proper permissions
 ```
 
 **Training Issues**:

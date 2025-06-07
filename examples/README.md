@@ -40,6 +40,13 @@ A comprehensive interactive demonstration of the accent classification system fe
    
    # Install Jupyter if not already available
    pip install jupyter notebook
+   
+   # Configure Google Text-to-Speech API credentials
+   # Option 1: Set environment variable
+   export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/credentials.json"
+   
+   # Option 2: Use .env file (copy sample.env to .env and edit)
+   cp ../sample.env ../.env
    ```
 
 2. **Launch the Notebook**
