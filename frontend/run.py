@@ -23,9 +23,9 @@ logger = logging.getLogger(__name__)
 
 def setup_environment():
     """Set up environment variables and configuration."""
-    # Set default port if not specified (7860 for Hugging Face Spaces)
+    # Set default port if not specified
     if 'PORT' not in os.environ:
-        os.environ['PORT'] = '7860'
+        os.environ['PORT'] = '5000'
     
     # Set production environment if not specified
     if 'FLASK_ENV' not in os.environ:
