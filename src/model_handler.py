@@ -351,10 +351,11 @@ class AccentClassifier:
             # Check if prediction is reliable
             reliable = confidence >= self.confidence_threshold
             
-            # If not reliable, return unknown
-            if not reliable:
-                accent_code = 'unknown'
-                accent_name = 'Unknown/Other'
+            # Always show the top prediction regardless of confidence
+            # (commented out the reliability override)
+            # if not reliable:
+            #     accent_code = 'unknown'
+            #     accent_name = 'Unknown/Other'
             
             return {
                 'accent': accent_code,

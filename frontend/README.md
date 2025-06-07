@@ -269,7 +269,7 @@ python -m pytest test_integration.py
 ## 📄 License & Attribution
 
 **Developed by:** [Kayode Femi Amoo (Nifemi Alpine)](https://x.com/usecodenaija)  
-**Company:** [CIVAI Technologies](https://civai.co)  
+**Company:** [CIVAI Technologies](https://github.com/civai-technologies/accent-classifier)  
 **Twitter:** [@usecodenaija](https://x.com/usecodenaija)  
 **Website:** [https://civai.co](https://civai.co)
 
