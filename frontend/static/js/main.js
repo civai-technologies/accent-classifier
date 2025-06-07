@@ -12,6 +12,7 @@ class AccentClassifier {
         
         this.initializeEventListeners();
         this.setupFileUpload();
+        this.setupDynamicPlaceholder();
     }
 
     initializeEventListeners() {
@@ -36,6 +37,19 @@ class AccentClassifier {
         
         // Media preview buttons
         this.setupMediaPreview();
+    }
+
+    setupDynamicPlaceholder() {
+        // Get current host and protocol
+        const protocol = window.location.protocol;
+        const host = window.location.host;
+        
+        // Construct the dynamic URL for the test MP4
+        const dynamicUrl = `${protocol}//${host}/static/american_test.mp4`;
+        
+        // Set the placeholder
+        const urlInput = document.getElementById('urlInput');
+        urlInput.placeholder = dynamicUrl;
     }
 
     setupFileUpload() {
@@ -154,7 +168,14 @@ class AccentClassifier {
                 
             case 'url-tab':
                 const urlInput = document.getElementById('urlInput');
-                const url = urlInput.value.trim();
+                let url = urlInput.value.trim();
+                
+                // If empty, use the placeholder URL
+                if (!url) {
+                    url = urlInput.placeholder;
+                    urlInput.value = url; // Update the input field to show the URL being used
+                }
+                
                 if (!url) {
                     this.showError('Please enter a valid URL.');
                     return;
