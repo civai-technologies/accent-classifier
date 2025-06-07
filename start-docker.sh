@@ -52,6 +52,6 @@ for i in {1..10}; do
 done
 
 echo "⚠️  Service might not be fully ready yet. Check logs with:"
-echo "   docker-compose logs -f"
+echo "   $COMPOSE_CMD logs -f"
 echo ""
 echo "🌐 Try accessing: http://localhost:3104" 
