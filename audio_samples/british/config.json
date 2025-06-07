@@ -1,0 +1,25 @@
+{
+  "language_name": "British Accent",
+  "accent_code": "british",
+  "tts_config": {
+    "gtts": {
+      "lang": "en",
+      "tld": "co.uk",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "en-GB",
+      "voice_name": "en-GB-Wavenet-B",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "I'm going to the shop to get some aluminium foil, a timetable for the theatre, and water. Can you believe it's already the fourth quarter? Let me grab my mobile phone and we'll be sorted.",
+    "Good morning! I'm from Britain and I quite enjoy having biscuits whilst watching films at the cinema. My favourite colour is grey and I drive on the motorway every day.",
+    "Water, aluminium, timetable, theatre, lift, flat, rubbish, holiday, trousers, mum, brilliant, rather, quite lovely indeed.",
+    "The British pronunciation includes words like aluminium instead of aluminum, and we say zed instead of zee for the letter Z.",
+    "I work for a company in the city centre and take the lift to the twentieth floor every morning for my job in advertising."
+  ],
+  "description": "British English accent from the United Kingdom with Received Pronunciation characteristics and distinct vocabulary."
+} 

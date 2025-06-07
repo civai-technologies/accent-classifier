@@ -1,0 +1,25 @@
+{
+  "language_name": "Russian Accent",
+  "accent_code": "russian",
+  "tts_config": {
+    "gtts": {
+      "lang": "ru",
+      "tld": "ru",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "ru-RU",
+      "voice_name": "ru-RU-Wavenet-E",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "Здравствуйте, как дела сегодня? Я иду на рынок купить хлеб, сыр и вино. Это прекрасный день для прогулки в парке.",
+    "Привет! Я из России и люблю есть борщ и пить чай. Москва - красивый город с множеством исторических памятников.",
+    "Русский язык очень богат и выразителен. У нас есть великие писатели как Толстой, Достоевский и Пушкин.",
+    "Я работаю в офисе в центре Санкт-Петербурга. Каждое утро я езжу на работу на метро, а вечером возвращаюсь домой.",
+    "Россия известна своей литературой, балетом и классической музыкой. У нас есть великие композиторы как Чайковский и Рахманинов."
+  ],
+  "description": "Standard Russian accent with characteristic phonetic patterns including palatalization and distinctive vowel system."
+} 

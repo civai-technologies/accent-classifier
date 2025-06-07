@@ -1,0 +1,25 @@
+{
+  "language_name": "German Accent",
+  "accent_code": "german",
+  "tts_config": {
+    "gtts": {
+      "lang": "de",
+      "tld": "de",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "de-DE",
+      "voice_name": "de-DE-Wavenet-H",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "Guten Tag, wie geht es Ihnen heute? Ich gehe zum Markt, um Brot, Käse und Wein zu kaufen. Es ist ein schöner Tag für einen Spaziergang im Park.",
+    "Hallo! Ich komme aus Deutschland und ich liebe es, Brezeln und Bier zu genießen. München ist eine wunderschöne Stadt mit vielen traditionellen Gebäuden.",
+    "Die deutsche Sprache hat viele interessante Wörter wie Schadenfreude, Gemütlichkeit und Wanderlust, die in andere Sprachen übernommen wurden.",
+    "Ich arbeite in einem Büro im Stadtzentrum von Berlin. Jeden Morgen fahre ich mit der U-Bahn zur Arbeit und abends kehre ich nach Hause zurück.",
+    "Deutschland ist berühmt für seine Ingenieurskünste, seine Philosophie und seine Musik. Wir haben großartige Komponisten wie Bach, Beethoven und Mozart."
+  ],
+  "description": "Standard German accent from Germany with characteristic consonant clusters and vowel system."
+} 

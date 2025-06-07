@@ -1,0 +1,25 @@
+{
+  "language_name": "French Accent",
+  "accent_code": "french",
+  "tts_config": {
+    "gtts": {
+      "lang": "fr",
+      "tld": "fr",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "fr-FR",
+      "voice_name": "fr-FR-Wavenet-F",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "Bonjour, comment allez-vous aujourd'hui? Je vais au marché pour acheter du pain, du fromage et du vin. C'est une belle journée pour une promenade dans le parc.",
+    "Salut! Je suis de France et j'adore manger des croissants le matin avec un café. Paris est une ville magnifique avec beaucoup de monuments historiques.",
+    "La cuisine française est réputée dans le monde entier. Nous avons des spécialités comme le coq au vin, la ratatouille et les macarons.",
+    "Je travaille dans un bureau au centre-ville de Lyon. Chaque matin, je prends le métro pour aller au travail et je rentre chez moi le soir.",
+    "Les Français sont passionnés par l'art, la littérature et la gastronomie. Nous apprécions les bons vins et les fromages de qualité."
+  ],
+  "description": "Standard French accent from France with characteristic phonetic patterns and nasal vowels."
+} 

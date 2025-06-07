@@ -1,0 +1,25 @@
+{
+  "language_name": "Spanish Accent",
+  "accent_code": "spanish",
+  "tts_config": {
+    "gtts": {
+      "lang": "es",
+      "tld": "es",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "es-ES",
+      "voice_name": "es-ES-Wavenet-F",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "Hola, ¿cómo está usted hoy? Voy al mercado para comprar pan, queso y vino. Es un día hermoso para un paseo en el parque.",
+    "¡Hola! Soy de España y me encanta comer tapas y paella. Madrid es una ciudad preciosa con muchos museos y monumentos históricos.",
+    "La lengua española es hablada por más de 500 millones de personas en todo el mundo. Tenemos una rica literatura y cultura.",
+    "Trabajo en una oficina en el centro de Barcelona. Cada mañana tomo el metro para ir al trabajo y por la tarde regreso a casa.",
+    "España es famosa por su arte, su música flamenca y su gastronomía. Tenemos grandes artistas como Picasso, Dalí y Goya."
+  ],
+  "description": "Peninsular Spanish accent from Spain with characteristic pronunciation and intonation patterns."
+} 

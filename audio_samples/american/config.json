@@ -1,0 +1,25 @@
+{
+  "language_name": "American Accent",
+  "accent_code": "american",
+  "tts_config": {
+    "gtts": {
+      "lang": "en",
+      "tld": "us",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "en-US",
+      "voice_name": "en-US-Neural2-D",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "I'm going to the store to get some aluminum foil, a schedule for the theater, and water. Can you believe it's already the fourth quarter? Let me grab my cell phone and we'll be all set.",
+    "Hey there! I'm from the United States and I love to eat cookies while watching movies at the theater. My favorite color is gray and I drive on the freeway every day.",
+    "Water, aluminum, schedule, theater, elevator, apartment, garbage, vacation, pants, mom, awesome, totally, like really cool stuff.",
+    "The American pronunciation includes words like aluminum instead of aluminium, and we say zee instead of zed for the letter Z.",
+    "I work in a corporation downtown and take the elevator to the twentieth floor every morning for my job in marketing."
+  ],
+  "description": "American English accent from the United States with characteristic pronunciation patterns including rhoticity and specific vowel sounds."
+} 

@@ -1,0 +1,25 @@
+{
+  "language_name": "Italian Accent",
+  "accent_code": "italian",
+  "tts_config": {
+    "gtts": {
+      "lang": "it",
+      "tld": "it",
+      "slow": false
+    },
+    "cloud_tts": {
+      "language_code": "it-IT",
+      "voice_name": "it-IT-Wavenet-A",
+      "audio_encoding": "LINEAR16",
+      "sample_rate_hertz": 16000
+    }
+  },
+  "sample_texts": [
+    "Ciao, come stai oggi? Vado al mercato per comprare pane, formaggio e vino. È una bella giornata per una passeggiata nel parco.",
+    "Salve! Sono dall'Italia e mi piace mangiare pasta e pizza. Roma è una città bellissima con molti monumenti storici.",
+    "La lingua italiana è molto melodiosa e espressiva. Abbiamo una ricca cultura letteraria con autori come Dante e Petrarca.",
+    "Lavoro in un ufficio nel centro di Milano. Ogni mattina prendo il treno per andare al lavoro e la sera torno a casa.",
+    "L'Italia è famosa per l'arte, la musica e la cucina. Abbiamo grandi artisti come Michelangelo, Leonardo da Vinci e Raffaello."
+  ],
+  "description": "Standard Italian accent with characteristic pronunciation patterns and melodic intonation."
+} 
