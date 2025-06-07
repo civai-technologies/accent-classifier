@@ -11,5 +11,3 @@ services:
       - HOST=0.0.0.0
       - FLASK_ENV=production
       - FLASK_DEBUG=False
-    networks:
-      - accent-classifier-network
