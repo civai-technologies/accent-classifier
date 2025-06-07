@@ -1,0 +1,51 @@
+# Git and version control
+.git
+.gitignore
+.github
+
+# Python cache and build files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+.env
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Documentation and development files
+docs/
+*.md
+!README_HUGGINGFACE.md
+DEPLOYMENT.md
+SCALABLE_ML_PROJECT_TEMPLATE.md
+ASSESSMENT_SUMMARY.md
+future-plan.md
+
+# Test files and caches
+.pytest_cache
+tests/
+.coverage
+htmlcov/
+
+# Development scripts
+start_frontend.sh
+analyze_samples.py
+sample.env
+inline_tasks.txt
+.cursorrules
+
+# Temporary and log files
+*.log
+temp/
+uploads/
+.DS_Store
+Thumbs.db 

@@ -1,0 +1,1 @@
+web: cd frontend && python run.py 

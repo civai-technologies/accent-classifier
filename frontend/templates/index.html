@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accent Classifier - English Accent Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="bg-primary text-white py-4 mb-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="mb-0">
+                            <i class="fas fa-microphone-alt me-2"></i>
+                            Accent Classifier
+                        </h1>
+                        <p class="mb-0 mt-2">Professional English Accent Detection and Analysis</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="badge bg-light text-dark fs-6">
+                            <i class="fas fa-globe me-1"></i>
+                            AI-Powered Analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- Instructions -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                How to Use This Tool
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6><i class="fas fa-upload text-primary"></i> Upload File</h6>
+                                    <p class="small">Upload audio (MP3, WAV) or video files (MP4, MOV, etc.)</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6><i class="fas fa-link text-success"></i> Paste URL</h6>
+                                    <p class="small">Direct links to videos (Loom, YouTube, direct MP4 links)</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6><i class="fas fa-play text-warning"></i> Try Demo</h6>
+                                    <p class="small">Use the default sample to test the system</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Interface -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Input Options -->
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-gradient-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-microphone me-2"></i>
+                                Audio/Video Input
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="accentForm" enctype="multipart/form-data">
+                                <!-- Tab Navigation -->
+                                <ul class="nav nav-tabs mb-3" id="inputTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="file-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#file-panel" type="button" role="tab">
+                                            <i class="fas fa-upload me-1"></i>Upload File
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="url-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#url-panel" type="button" role="tab">
+                                            <i class="fas fa-link me-1"></i>URL
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="demo-tab" data-bs-toggle="tab" 
+                                                data-bs-target="#demo-panel" type="button" role="tab">
+                                            <i class="fas fa-play me-1"></i>Demo
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab Content -->
+                                <div class="tab-content" id="inputTabContent">
+                                    <!-- File Upload -->
+                                    <div class="tab-pane fade show active" id="file-panel" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label for="fileInput" class="form-label">Choose Audio/Video File</label>
+                                            <input type="file" class="form-control" id="fileInput" name="file" 
+                                                   accept=".mp3,.wav,.mp4,.mov,.avi,.mkv,.webm,.m4a">
+                                            <div class="form-text">
+                                                Supported formats: MP3, WAV, MP4, MOV, AVI, MKV, WebM, M4A (Max: 100MB)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- URL Input -->
+                                    <div class="tab-pane fade" id="url-panel" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label for="urlInput" class="form-label">Video URL</label>
+                                            <input type="url" class="form-control" id="urlInput" name="url" 
+                                                   placeholder="https://example.com/video.mp4">
+                                            <div class="form-text">
+                                                Paste a direct link to a video file (Loom, YouTube, direct MP4 links)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Demo -->
+                                    <div class="tab-pane fade" id="demo-panel" role="tabpanel">
+                                        <div class="text-center mb-4">
+                                            <i class="fas fa-play-circle text-primary" style="font-size: 3rem;"></i>
+                                            <h6 class="mt-2">Test Samples</h6>
+                                            <p class="text-muted">
+                                                Preview and test the system with pre-recorded accent samples
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- Media Preview Area -->
+                                        <div class="card mb-4" id="mediaPreviewCard" style="display: none;">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">
+                                                    <i class="fas fa-eye me-2"></i>
+                                                    <span id="previewTitle">Sample Preview</span>
+                                                </h6>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <!-- Video Player -->
+                                                <video id="videoPlayer" controls preload="metadata" style="display: none; max-width: 100%; height: 200px; border-radius: 8px;" class="mb-3">
+                                                    <p>Your browser does not support the video tag.</p>
+                                                </video>
+                                                
+                                                <!-- Audio Player -->
+                                                <audio id="audioPlayer" controls style="display: none; width: 100%;" class="mb-3">
+                                                    Your browser does not support the audio tag.
+                                                </audio>
+                                                
+                                                <div class="mt-3">
+                                                    <button type="button" class="btn btn-primary" id="analyzeSelectedSample">
+                                                        <i class="fas fa-brain me-2"></i>
+                                                        Analyze This Sample
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary ms-2" id="clearPreview">
+                                                        <i class="fas fa-times me-2"></i>
+                                                        Clear
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Test Sample Selection -->
+                                        <div id="sampleSelection">
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <div class="d-flex gap-2">
+                                                        <button type="button" class="btn btn-outline-primary flex-fill" data-sample="american" data-preview="american_mp4">
+                                                            <i class="fas fa-flag-usa me-2"></i>
+                                                            American Accent
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-audio="american_wav" title="Listen to audio only">
+                                                            <i class="fas fa-volume-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-flex gap-2">
+                                                        <button type="button" class="btn btn-outline-success flex-fill" data-sample="british" data-preview="british_mp4">
+                                                            <i class="fas fa-crown me-2"></i>
+                                                            British Accent
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-audio="british_wav" title="Listen to audio only">
+                                                            <i class="fas fa-volume-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-flex gap-2">
+                                                        <button type="button" class="btn btn-outline-info flex-fill" data-sample="french" data-preview="french_mp4">
+                                                            <i class="fas fa-wine-glass me-2"></i>
+                                                            French Accent
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-audio="french_wav" title="Listen to audio only">
+                                                            <i class="fas fa-volume-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Analyze Button -->
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn">
+                                        <i class="fas fa-brain me-2"></i>
+                                        Analyze Accent
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- Progress Bar -->
+                            <div class="mt-3" id="progressContainer" style="display: none;">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <small class="text-muted" id="progressText">Processing...</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Results Panel -->
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-gradient-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Analysis Results
+                            </h5>
+                        </div>
+                        <div class="card-body" id="resultsPanel">
+                            <div class="text-center text-muted py-5" id="noResults">
+                                <i class="fas fa-chart-line" style="font-size: 3rem; opacity: 0.3;"></i>
+                                <p class="mt-3">Results will appear here after analysis</p>
+                            </div>
+
+                            <!-- Results Content (hidden initially) -->
+                            <div id="resultsContent" style="display: none;">
+                                <!-- Main Result -->
+                                <div class="text-center mb-4">
+                                    <div class="accent-badge" id="accentBadge">
+                                        <i class="fas fa-globe-americas"></i>
+                                        <span id="accentName">American</span>
+                                    </div>
+                                    <div class="confidence-meter mt-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold">Confidence Level</span>
+                                            <span class="badge" id="confidenceBadge">High</span>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 20px;">
+                                            <div class="progress-bar" id="confidenceBar" role="progressbar" 
+                                                 style="width: 85%">85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Summary -->
+                                <div class="alert alert-info" role="alert">
+                                    <h6 class="alert-heading">
+                                        <i class="fas fa-info-circle me-2"></i>Analysis Summary
+                                    </h6>
+                                    <p class="mb-0" id="summaryText">
+                                        Analysis summary will appear here...
+                                    </p>
+                                </div>
+
+                                <!-- Detailed Results -->
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <h6><i class="fas fa-list me-2"></i>All Predictions</h6>
+                                        <div id="allPredictions">
+                                            <!-- Will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                    <button class="btn btn-outline-secondary" id="resetBtn">
+                                        <i class="fas fa-redo me-2"></i>Analyze Another
+                                    </button>
+                                    <button class="btn btn-outline-primary" id="downloadBtn">
+                                        <i class="fas fa-download me-2"></i>Download Results
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accent Classification Guide -->
+                    <div class="card shadow-sm mt-4">
+                        <div class="card-header bg-gradient-warning text-dark">
+                            <h6 class="mb-0">
+                                <i class="fas fa-graduation-cap me-2"></i>
+                                Accent Classification Guide
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row small">
+                                <div class="col-6">
+                                    <h6 class="text-success">Native English Accents</h6>
+                                    <ul class="list-unstyled">
+                                        <li>• American English</li>
+                                        <li>• British English</li>
+                                        <li>• Australian English</li>
+                                        <li>• Canadian English</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="text-warning">Confidence Levels</h6>
+                                    <ul class="list-unstyled">
+                                        <li>• Confidence >80%: Very High</li>
+                                        <li>• Confidence 60-80%: High</li>
+                                        <li>• Confidence <60%: Moderate</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="text-center mt-5 py-4 border-top">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <p class="text-muted mb-2">
+                            <strong>Accent Classifier</strong> - AI-powered English accent detection and analysis
+                        </p>
+                        <p class="small text-muted">
+                            Developed by <a href="https://x.com/usecodenaija" target="_blank" class="text-decoration-none">
+                                Kayode Femi Amoo</a> | 
+                            <a href="https://civai.co" target="_blank" class="text-decoration-none">CIVAI Technologies</a>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
