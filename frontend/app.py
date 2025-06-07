@@ -276,7 +276,10 @@ def serve_test_media(sample_type):
             'american_wav': 'American Accent_sample.wav',
             'british_wav': 'British Accent_sample.wav',
             'french_wav': 'French Accent_sample.wav',
-
+            'german_wav': 'German Accent_sample.wav',
+            'spanish_wav': 'Spanish Accent_sample.wav',
+            'russian_wav': 'Russian Accent_sample.wav',
+            'italian_wav': 'Italian Accent_sample.wav'
         }
         
         if sample_type not in media_files:

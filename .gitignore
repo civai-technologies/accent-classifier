@@ -1,5 +1,6 @@
 .env
 *.wav
+!test_samples/*.wav
 __pycache__/
 gapp.json
 inline_tasks.txt
